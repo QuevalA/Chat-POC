@@ -1,0 +1,28 @@
+<div>
+  <h1>Chat POC</h1>
+  <app-username (userNameEvent)="userNameUpdate($event)" *ngIf="!userName"></app-username>
+  <div>
+    <div>
+      <h2>User list</h2>
+      <div *ngFor="let user of userList" >
+        <p>{{ user }}</p>
+      </div>
+    </div>
+    <br/>
+    <div>
+      <div *ngFor="let msg of messageList" [ngClass]="{mine: msg.mine}">
+        <div>
+          <div>
+            <br/>
+            <p>{{ msg.userName }} said:</p>
+            <p>{{ msg.message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="message">
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
